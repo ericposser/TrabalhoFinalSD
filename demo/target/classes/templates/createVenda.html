@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Criar Venda</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-5">
+    <h1 class="mb-4">Registrar Venda</h1>
+
+    <!-- Exibir mensagem de erro ou sucesso -->
+    <div th:if="${mensagem}" class="alert alert-warning" role="alert">
+        <p th:text="${mensagem}"></p>
+    </div>
+
+    <form th:action="@{/vendas}" method="post" class="needs-validation" novalidate>
+        <div class="form-group">
+            <label for="produtoId">Produto:</label>
+            <select id="produtoId" name="produtoId" class="form-control" required>
+                <option value="" disabled selected>Selecione um produto</option>
+                <th:block th:each="produto : ${produtos}">
+                    <option th:value="${produto.id}" th:text="${produto.nome}"></option>
+                </th:block>
+            </select>
+            <div class="invalid-feedback">Por favor, selecione um produto.</div>
+        </div>
+
+        <div class="form-group">
+            <label for="quantidade">Quantidade:</label>
+            <input type="number" class="form-control" id="quantidade" name="quantidade" required />
+            <div class="invalid-feedback">Por favor, insira a quantidade vendida.</div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Registrar Venda</button>
+    </form>
+
+    <a th:href="@{/produtos}" class="btn btn-secondary mt-3">Voltar para a Lista de Produtos</a>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

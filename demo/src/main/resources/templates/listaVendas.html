@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Vendas</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-5">
+    <h2>Lista de Vendas</h2>
+
+    <div th:if="${mensagem}" class="alert alert-info" role="alert" th:text="${mensagem}"></div>
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Produto</th>
+            <th>Quantidade</th>
+            <th>Data da Venda</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="venda : ${vendas}">
+            <td th:text="${produtosMap[venda.produtoId]}"></td>
+            <td th:text="${venda.quantidade}"></td>
+            <td th:text="${venda.dataVenda}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Controle de Estoque - Produtos</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-4">
+    <h1 class="mb-4">Lista de Produtos</h1>
+
+    <!-- Exibe mensagem de feedback -->
+    <div th:if="${mensagem}" class="alert alert-info" th:text="${mensagem}"></div>
+
+    <!-- Botão para ir para a tela de criação de produtos -->
+    <a th:href="@{/produtos/create}" class="btn btn-primary mb-3">Criar Novo Produto</a>
+
+    <!-- Tabela para exibir produtos -->
+    <table class="table table-striped">
+        <thead class="thead-dark">
+        <tr>
+            <th>Nome</th>
+            <th>Descrição</th>
+            <th>Quantidade</th>
+            <th>Preço</th>
+            <th>Ações</th> <!-- Coluna para ações -->
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Iteração sobre a lista de produtos -->
+        <tr th:each="produto : ${produtos}">
+            <td th:text="${produto.nome}"></td>
+            <td th:text="${produto.descricao}"></td>
+            <td th:text="${produto.quantidade}"></td>
+            <td th:text="${produto.preco}"></td>
+            <td>
+                <!-- Botão para deletar produto -->
+                <form th:action="@{/produtos/delete/{id}(id=${produto.id})}" method="post" class="d-inline" onsubmit="return confirm('Tem certeza que deseja deletar este produto?');">
+                    <button type="submit" class="btn btn-danger btn-sm">Deletar</button>
+                </form>
+                <!-- Botão para editar produto -->
+                <form th:action="@{/produtos/edit/{id}(id=${produto.id})}" method="get" class="d-inline">
+                    <button type="submit" class="btn btn-warning btn-sm">Editar</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <!-- Botão para retornar à tela inicial -->
+    <a th:href="@{/}" class="btn btn-secondary">Voltar à Tela Inicial</a>
+</div>
+
+<!-- Scripts do Bootstrap -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

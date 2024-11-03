@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Controle de Estoque - Tela Inicial</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container text-center mt-5">
+    <h1 class="display-4 mb-4">Bem-vindo ao Controle de Estoque</h1>
+    <p class="lead">Gerencie seus produtos e vendas de forma simples.</p>
+
+    <!-- Botão para ir para a tela de produtos -->
+    <a th:href="@{/produtos}" class="btn btn-primary btn-lg mb-3">Ver Produtos</a>
+
+    <!-- Adicionando uma quebra de linha ou usando uma div para espaço -->
+    <div class="mb-3"></div>
+
+    <!-- Botão para ir para a tela de efetuar uma venda -->
+    <a th:href="@{/vendas/create}" class="btn btn-success btn-lg mb-3">Efetuar Venda</a>
+
+    <div class="mb-3"></div>
+
+    <!-- Botão para acessar a lista de vendas -->
+    <a th:href="@{/vendas}" class="btn btn-info btn-lg mb-3">Ver Vendas</a>
+
+</div>
+
+<!-- Scripts do Bootstrap -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
